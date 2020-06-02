@@ -1,0 +1,18 @@
+{
+  "name": "jdbc_source_mysql_movies",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+    "connection.url": "jdbc:mysql://mysql:3306/moviesdb",
+    "connection.user": "root",
+    "connection.password": "password",
+    "mode": "timestamp",
+    "topic.prefix": "mysql-movies",
+    "timestamp.column.name": "last_update",
+    "query": "SELECT m.id,m.title,m.description,m.release_date,g.genre_name,m.last_update from movie m LEFT OUTER JOIN genre g on m.genre_id=g.id",
+    "transforms": "TimestampConverter",
+    "transforms.TimestampConverter.type": "org.apache.kafka.connect.transforms.TimestampConverter$Value",
+    "transforms.TimestampConverter.format": "yyyy-MM-dd",
+    "transforms.TimestampConverter.field": "release_date",
+    "transforms.TimestampConverter.target.type": "string"
+  }
+}
