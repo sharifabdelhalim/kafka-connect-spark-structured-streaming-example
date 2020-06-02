@@ -7,5 +7,5 @@ Spark Structured Streaming then reads the data from Kafka and writes the data as
 
 ![image](docs/images/overview.png)
 ## Deployment
-All the components are containerized with docker. The whole services are started with a docker-compose up command. After the services are all up (it takes a while until kafka connect has started completely) the init script can be executed which deploys the mysql-source-connector and spark
+All the components are containerized with docker. The whole services are started with a `docker-compose up` command. After the services are all up (it takes a while until kafka connect has started completely) the init script can be executed which deploys the mysql-source-connector and spark
 structured streaming job.
